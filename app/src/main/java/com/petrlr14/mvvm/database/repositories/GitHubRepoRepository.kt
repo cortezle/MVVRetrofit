@@ -8,10 +8,10 @@ import com.petrlr14.mvvm.service.retrofit.GithubService
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 
-class GitHubRepoRepository (private val repoDao:GitHubDAO){
+class GitHubRepoRepository (private val repoDao:GitHubDAO, private val githubService: GithubService){
 
     fun retrieveReposAsync(user:String): Deferred<Response<List<GitHubRepo>>> {
-        return GithubService.
+        return githubService.getRepos(user)
     }
 
     @WorkerThread
